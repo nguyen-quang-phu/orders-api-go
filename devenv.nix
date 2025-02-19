@@ -7,7 +7,7 @@
 }: let
   # https://lazamar.co.uk/nix-versions/?channel=nixpkgs-unstable&package=go
   custom_pkgs = import (builtins.fetchTarball {
-  url = "https://github.com/NixOS/nixpkgs/archive/21808d22b1cda1898b71cf1a1beb524a97add2c4.tar.gz";
+    url = "https://github.com/NixOS/nixpkgs/archive/21808d22b1cda1898b71cf1a1beb524a97add2c4.tar.gz";
   }) {};
 
   go_1_23_4 = custom_pkgs.go;
@@ -31,6 +31,11 @@ in {
 
   # https://devenv.sh/services/
   # services.postgres.enable = true;
+  services = {
+    redis = {
+      enable = true;
+    };
+  };
 
   # https://devenv.sh/scripts/
   scripts.hello.exec = ''
